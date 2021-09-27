@@ -34,7 +34,7 @@ function LoginRegisterPage() {
           sm={12}
           className="d-flex justify-content-center flex-column align-items-center"
         >
-          <h3 className="font-weight-bold mb-3">Merhaba,</h3>
+          <h3 className="font-weight-bold mb-3">Merhaba Müşteri Paneline Hosgeldiniz,</h3>
           <p className="font-weight-bold  mb-4">
             Onlineplasiyer'e giriş yap veya hesap oluştur. Anında ürünlerini sat.
           </p>

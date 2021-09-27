@@ -26,7 +26,7 @@ class MutationEndpoints {
 
     return ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/merchant/login', false)
+        .setUrl('/customer/login', false)
         .setData({ username, password })
         .post(),
     );
@@ -46,7 +46,7 @@ class MutationEndpoints {
   }) => {
     return ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/merchant/register', false)
+        .setUrl('/customer/register', false)
         .setData({
           cityId,
           stateId,

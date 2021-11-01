@@ -11,6 +11,7 @@ import { useCartSetPaymentMutation } from '@/queries/mutations/use-set-payment';
 import { useRemoveCartItemMutation } from '@/queries/mutations/use-remove-cart';
 import CartItemHolder from '@/components/ui/cart-item-holder';
 import { useGetPaymentMethods } from '@/queries/use-get-payment-methods';
+import { useCartContext } from '@/contexts/cart-context';
 
 /* CartPage Helpers */
 
@@ -24,13 +25,14 @@ interface CartPageProps {}
 function CartPage(props: React.PropsWithChildren<CartPageProps>) {
   /* CartPage Variables */
   const history = useHistory();
+  const { setCart, removeCart } = useCartContext();
   const [allChecked, setAllChecked] = React.useState<boolean>(true);
   const [selectedSellerIds, setSelectedSellerIds] = React.useState<Array<string>>([]);
   const [selectedPaymentMethods, setSelectedPaymentMethods] = React.useState<
     Array<{ id: string; paymentMethod: string }>
   >([]);
 
-  const { data: cart, error: cartError, isLoading: cartLoading } = useGetCart(true);
+  const { data: cart, error: cartError, isLoading: cartLoading, refetch: refetchCart } = useGetCart(true);
   const {
     data: customerCreditSummary,
     isLoading: customerCreditSummaryLoading,
@@ -39,9 +41,9 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
 
   const { data: paymentMethods, isLoading: paymentMethodsLoading, error: paymentMethdosError } = useGetPaymentMethods();
 
-  const { mutate: removeItemMutation } = useRemoveCartItemMutation();
+  const { mutateAsync: removeItemMutation } = useRemoveCartItemMutation();
 
-  const { mutate: addToCart } = useAddToCartMutation();
+  const { mutateAsync: addToCart } = useAddToCartMutation();
 
   const { mutateAsync: setPaymentMutation } = useCartSetPaymentMutation();
 
@@ -72,6 +74,9 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
   }, [allChecked, cart]);
   /* CartPage Lifecycle  */
   React.useEffect(() => {
+    refetchCart();
+  }, [refetchCart]);
+  React.useEffect(() => {
     if (cart && cart.items && cart.items.length > 0 && !cartError && !cartLoading) {
       setSelectedSellerIds(cart.items.map(cartItem => cartItem.id));
     }
@@ -81,9 +86,10 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
     checkoutCart({
       sellerIdList: selectedSellerIds,
     }).then(() => {
+      removeCart();
       history.push('/orders');
     });
-  }, [checkoutCart, history, selectedSellerIds]);
+  }, [checkoutCart, history, removeCart, selectedSellerIds]);
 
   return (
     <UIContainer>
@@ -116,8 +122,16 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
                       cartItemCount={cart.items.length}
                       onSelectedChanged={onSelectedSellersChanged}
                       allSelected={selectedSellerIds.some(ids => cartItem.id === ids)}
-                      addToCart={(id: string, quantity: number) => addToCart({ id, quantity })}
-                      removeItemHandler={(_cartItemId: string) => removeItemMutation({ id: _cartItemId })}
+                      addToCart={(id: string, quantity: number) => {
+                        addToCart({ id, quantity }).then(data => {
+                          setCart(data);
+                        });
+                      }}
+                      removeItemHandler={(_cartItemId: string) => {
+                        removeItemMutation({ id: _cartItemId }).then(data => {
+                          setCart(data);
+                        });
+                      }}
                       onPaymentMethodChanged={(id: string, paymentMethod: string) => {
                         setPaymentMutation({ paymentOption: paymentMethod, holderId: id }).then(() => {
                           setSelectedPaymentMethods([...selectedPaymentMethods, { id, paymentMethod }]);

@@ -35,9 +35,26 @@ function HeaderMenu(props: HeaderMenuProps) {
                 <li>
                   <UILink to="/customer/home">ANASAYFA</UILink>
                 </li>
-
+                <li>
+                  <UILink to="/merchants">SATICILAR</UILink>
+                </li>
                 <li>
                   <UILink to="/orders">SİPARİŞLERİ GÖR</UILink>
+                </li>
+                <li>
+                  <UILink to="">
+                    CARİ İŞLEMLER <UIOutlineDownIcon color="#9e9e9e" />
+                  </UILink>
+                  <div className="menu_option">
+                    <ul>
+                      <li>
+                        <UILink to="/credits">Cariler</UILink>
+                      </li>
+                      <li>
+                        <UILink to="/credit-activities">Cari Ekstreleri</UILink>
+                      </li>
+                    </ul>
+                  </div>
                 </li>
                 <li>
                   <UILink to="">

@@ -6,6 +6,7 @@ import {
   ICardItemResponse,
 } from '@/utils/api/api-models';
 import { Row, Col, Button } from 'react-bootstrap';
+import { FaTrash } from 'react-icons/fa';
 import { UIContainer } from '../container';
 import { UICheckbox } from '../checkbox';
 import { UITableComponent } from '../table';
@@ -159,7 +160,7 @@ function CartItemHolder(props: CartItemHolderProps) {
                       props.removeItemHandler(productSpecify.productId);
                     }}
                   >
-                    Sil
+                    <FaTrash />
                   </Button>
                 ),
               },

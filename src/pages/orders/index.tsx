@@ -100,7 +100,7 @@ const OrdersPage: React.SFC<OrdersPageProps> = props => {
               setSortBy={setSortBy}
               setSortType={setSortType}
               orders={orders.values}
-              elementCountOfPage={orders.elementCountOfPage}
+              elementCountOfPage={orders.totalPage}
               setCustomer={handleChangeCustomer}
               setDate={handleChangeDate}
               handlePdfBtnClick={handlePdfBtnClick}

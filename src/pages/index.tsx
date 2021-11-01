@@ -40,6 +40,20 @@ const CartPage = React.lazy(() =>
   })),
 );
 
+const CreditActivitiesPage = React.lazy(() =>
+  import('./credit-activities/index').then(module => ({
+    default: module.CreditActivitiesPage,
+  })),
+);
+
+const MerchantCreditsPage = React.lazy(() =>
+  import('./merchant-credits/index').then(module => ({
+    default: module.MerchantCreditsPage,
+  })),
+);
+
+const MerchantsPage = React.lazy(() => import('./merchants').then(module => ({ default: module.MerchantsPage })));
+
 interface IRoute {
   path: string;
   basePath: string;
@@ -60,7 +74,19 @@ export const RoutesList: IRoute[] = [
     component: CategoryProducts,
     isPrivate: true,
   },
-
+  {
+    path: '/credits',
+    basePath: '/credits',
+    component: MerchantCreditsPage,
+    isPrivate: true,
+  },
+  {
+    path: '/credit-activities',
+    basePath: '/credit-activities',
+    component: CreditActivitiesPage,
+    isPrivate: true,
+  },
+  { path: '/merchants', basePath: '/merchants', component: MerchantsPage, isPrivate: true },
   { path: '/customer/home', basePath: '/customer/home', component: CustomerHome, isPrivate: true },
   { path: '/cart', basePath: '/cart', component: CartPage, isPrivate: true },
   { path: '/login', basePath: '/login', component: LoginRegisterPage, isPrivate: false },

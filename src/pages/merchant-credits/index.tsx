@@ -5,16 +5,16 @@ import { IUserCreditResponse } from '@/services/helpers/backend-models';
 import { Row, Col } from 'react-bootstrap';
 import { FaRegEdit } from 'react-icons/fa';
 
-/* MerchantCredits Helpers */
-interface MerchantCreditsProps {}
+/* MerchantCreditsPage Helpers */
+interface MerchantCreditsPageProps {}
 
-/* MerchantCredits Constants */
+/* MerchantCreditsPage Constants */
 
-/* MerchantCredits Styles */
+/* MerchantCreditsPage Styles */
 
-/* MerchantCredits Component  */
-function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
-  /* MerchantCredits Variables */
+/* MerchantCreditsPage Component  */
+function MerchantCreditsPage(props: React.PropsWithChildren<MerchantCreditsPageProps>) {
+  /* MerchantCreditsPage Variables */
 
   const [sortBy, setSortBy] = React.useState<string>();
   const [sortType, setSortType] = React.useState<string>();
@@ -28,9 +28,9 @@ function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
     userName: username,
   });
 
-  /* MerchantCredits Callbacks */
+  /* MerchantCreditsPage Callbacks */
 
-  /* MerchantCredits Lifecycle  */
+  /* MerchantCreditsPage Lifecycle  */
 
   return (
     <UIContainer>
@@ -43,15 +43,15 @@ function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
             <UITableComponent
               columns={[
                 {
-                  Header: 'Musteri No',
+                  Header: 'Satici No',
                   customRenderer: (item: IUserCreditResponse) => item.customerId.slice(0, 10),
-                  accessor: 'customerId',
+                  accessor: 'merchantId',
                   sort: true,
                   sortType: 'desc',
                 },
                 {
-                  Header: 'Musteri',
-                  accessor: 'customerName',
+                  Header: 'Satici',
+                  accessor: 'merchantName',
                   sort: true,
                   sortType: 'desc',
                   customRenderer: (item: IUserCreditResponse) => (
@@ -70,11 +70,6 @@ function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
                   sort: true,
                   sortType: 'desc',
                 },
-                {
-                  Header: '',
-                  accessor: 'operations',
-                  customRenderer: (item: IUserCreditResponse) => <FaRegEdit color='color="#74b126"' size={16} />,
-                },
               ]}
               data={creditsValues.values}
               currentPage={pageNumber}
@@ -84,7 +79,7 @@ function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
               pagination
               showLastOrFirstPage
               showPageSize={7}
-              totalPages={creditsValues.elementCountOfPage}
+              totalPages={creditsValues.totalPage}
               onSortChange={(e: string) => {
                 setSortBy(e);
               }}
@@ -98,6 +93,6 @@ function MerchantCredits(props: React.PropsWithChildren<MerchantCreditsProps>) {
     </UIContainer>
   );
 }
-const PureMerchantCredits = React.memo(MerchantCredits);
+const PureMerchantCreditsPage = React.memo(MerchantCreditsPage);
 
-export { PureMerchantCredits as MerchantCredits };
+export { PureMerchantCreditsPage as MerchantCreditsPage };

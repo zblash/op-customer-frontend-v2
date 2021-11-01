@@ -48,6 +48,7 @@ export interface IRegisterResponse {
 }
 
 export interface IRegisterRequest {
+  //merchant için
   cityId: string;
   stateId: string;
   details: string;
@@ -329,6 +330,19 @@ export interface IUserRegisterResponse {
   status: boolean;
   taxNumber: string;
   username: string;
+}
+
+export interface ICustomerRegisterRequest {
+  cityId: string;
+  stateId: string;
+  details: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  taxNumber: string;
+  phoneNumber: string;
+  customerTypeId: string;
 }
 
 export interface INotificationResponse {

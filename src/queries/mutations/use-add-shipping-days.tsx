@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { mutationEndPoints } from '@/utils/api/mutation-endpoints';
-import { DaysOfWeek, IShippingDaysResponse } from '@/utils/api/api-models';
+import { DaysOfWeek, IExceptionResponse, IShippingDaysResponse } from '@/utils/api/api-models';
 import { useAlert } from '@/utils/hooks';
 
 async function addShippingDays(s: { stateId: string; days: DaysOfWeek[] }) {
@@ -16,9 +16,12 @@ export const useAddShippingDays = () => {
   return useMutation((s: { stateId: string; days: DaysOfWeek[] }) => addShippingDays(s), {
     onSuccess: (data: IShippingDaysResponse) => {
       queryClient.invalidateQueries('shipping-days');
+      alert.show(`${t('Teslimat Tarihi Ekleme Işlemi Başarılı')}`, {
+        type: 'success',
+      });
     },
-    onError: () => {
-      alert.show(`${t('forms:login-error')}`, {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
         type: 'error',
       });
     },

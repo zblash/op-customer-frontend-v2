@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { mutationEndPoints } from '@/utils/api/mutation-endpoints';
-import { ISpecifyProductRequest, ISpecifyProductResponse } from '@/utils/api/api-models';
+import { IExceptionResponse, ISpecifyProductRequest, ISpecifyProductResponse } from '@/utils/api/api-models';
 import { useAlert } from '@/utils/hooks';
 
 export interface IEditSpecifyProductRequest {
@@ -22,9 +22,12 @@ export const useEditProductSpecify = () => {
     onSuccess: (data: ISpecifyProductResponse) => {
       queryClient.invalidateQueries('all-product-specifies');
       queryClient.invalidateQueries(['product-by-id', data.id]);
+      alert.show(`${t('Ürün Tanımı Başarıyla Güncellendi')}`, {
+        type: 'success',
+      });
     },
-    onError: () => {
-      alert.show(`${t('forms:login-error')}`, {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
         type: 'error',
       });
     },

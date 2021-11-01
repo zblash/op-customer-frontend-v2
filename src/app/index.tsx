@@ -7,6 +7,8 @@ import { FullScreenLoading } from '@/components/ui/full-screen-loading';
 import { css } from '@/styled';
 import { LoadingContext } from '@/contexts/loading-context';
 import { AuthProvider } from '@/contexts/auth-context';
+import { MainCategoriesContextProvider } from '@/contexts/main-categories-context';
+import { CartContextProvider } from '@/contexts/cart-context';
 
 const opacityLoading = css`
   opacity: 0.7;
@@ -27,21 +29,25 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <LoadingContext.Provider
-          value={{
-            show: () => {
-              setLoading(true);
-            },
-            hide: () => {
-              setLoading(false);
-            },
-          }}
-        >
-          {loading && <FullScreenLoading className={opacityLoading} />}
+        <MainCategoriesContextProvider>
+          <CartContextProvider>
+            <LoadingContext.Provider
+              value={{
+                show: () => {
+                  setLoading(true);
+                },
+                hide: () => {
+                  setLoading(false);
+                },
+              }}
+            >
+              {loading && <FullScreenLoading className={opacityLoading} />}
 
-          <Routes />
-          <ToastContainer />
-        </LoadingContext.Provider>
+              <Routes />
+              <ToastContainer />
+            </LoadingContext.Provider>
+          </CartContextProvider>
+        </MainCategoriesContextProvider>
       </AuthProvider>
     </BrowserRouter>
   );

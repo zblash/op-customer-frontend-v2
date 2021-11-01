@@ -1,7 +1,7 @@
+import { IPaymentMethodsResponse } from '@/services/helpers/backend-models';
 import {
   ICategoryResponse,
   IProductResponse,
-  IUserCommonResponse,
   IAddressStateResponse,
   IAddressCityResponse,
   IAnnouncement,
@@ -16,6 +16,8 @@ import {
   IObligationTotals,
   IOrderSummary,
   ICustomerTypeResponse,
+  ICreditResponse,
+  ICardResponse,
 } from './api-models';
 import { ApiCall, ApiCallService } from './ApiCall';
 
@@ -41,6 +43,9 @@ class QueryEndpoints {
   getSubCategoriesByParentId: (s: { parentId: string }) => Promise<ICategoryResponse[]> = ({ parentId }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/categories/${parentId}/subCategories`, true).get());
 
+  getCart: () => Promise<ICardResponse> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/cart', true).get());
+
   getCategoryByID: (s: { id: string }) => Promise<ICategoryResponse> = ({ id }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/categories/${id}`, true).get());
 
@@ -65,9 +70,8 @@ class QueryEndpoints {
   getStates: () => Promise<any> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/definitions/states', false).get());
 
-  getObligationTotal: () => Promise<IObligationTotals> = () => {
-    return ApiCallService.request(new (ApiCall as any)().setUrl('/obligations/totals', true).get());
-  };
+  getObligationTotal: () => Promise<IObligationTotals> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/obligations/totals', true).get());
 
   getAnnouncements: () => Promise<Array<IAnnouncement>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/announcements', true).get());
@@ -77,6 +81,15 @@ class QueryEndpoints {
 
   getOrderSummary: () => Promise<IOrderSummary> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/orders/summary', true).get());
+
+  getAllNotifications: () => Promise<Array<INotificationResponse>> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/notifications', true).get());
+
+  getPaymentMethods: () => Promise<Array<IPaymentMethodsResponse>> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/payment/methods', true).get());
+
+  getCredit: () => Promise<ICreditResponse> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/credits/my', true).get());
 
   getAllUsersNotifications: () => Promise<Array<INotificationResponse>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/notifications/my', true).get());
@@ -90,19 +103,20 @@ class QueryEndpoints {
   getTicketRepliesByTicketId: (s: { id: string }) => Promise<Array<ITicketReplyResponse>> = ({ id }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/tickets/${id}/replies`, true).get());
 
-  getAllProducts: () => Promise<Array<IProductResponse>> = () => {
-    return ApiCallService.request(new (ApiCall as any)().setUrl('/products/byUser', true).get());
-  };
+  getAllProducts: () => Promise<Array<IProductResponse>> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/products/byUser', true).get());
 
-  getUsersCreditByUser: (s: { userId: string }) => Promise<IUserCreditResponse> = ({ userId }) => {
-    return ApiCallService.request(new (ApiCall as any)().setUrl(`/credits/byUser/${userId}`, true).get());
-  };
+  getUsersCreditByUser: (s: { userId: string }) => Promise<IUserCreditResponse> = ({ userId }) =>
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/credits/byUser/${userId}`, true).get());
 
   getShippingDays: () => Promise<Array<IShippingDaysResponse>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/shippingDays', true).get());
 
   getAllowedStateForShippingDays: () => Promise<Array<IAddressStateResponse>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/shippingDays/allowedStates', true).get());
+
+  getMerchantShippingDays: (s: { merchantId: string }) => Promise<IShippingDaysResponse> = ({ merchantId }) =>
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/shippingDays/merchant/${merchantId}`, true).get());
 
   getUserInfos: () => Promise<IUserInfoResponse> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/user/info', true).get());

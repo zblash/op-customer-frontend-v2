@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { mutationEndPoints } from '@/utils/api/mutation-endpoints';
-import { IUserCreditResponse } from '@/utils/api/api-models';
+import { IExceptionResponse, IUserCreditResponse } from '@/utils/api/api-models';
 import { useAlert } from '@/utils/hooks';
 
 export interface SetCreditProps {
@@ -27,9 +27,12 @@ export const useCreditMutation = () => {
   return useMutation((input: SetCreditProps) => mutateCredit(input), {
     onSuccess: (data: IUserCreditResponse) => {
       queryClient.invalidateQueries('all-users-credits');
+      alert.show(`${t('Krediler Başarıyla Güncellendi')}`, {
+        type: 'success',
+      });
     },
-    onError: () => {
-      alert.show(`${t('forms:login-error')}`, {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
         type: 'error',
       });
     },

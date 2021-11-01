@@ -1,0 +1,12 @@
+.product-filter-wrapper {
+  width: 100%;
+  border-bottom: 1px solid $gray-white;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+  .product-filter {
+    width: 100%;
+    a {
+      color: $black !important;
+    }
+  }
+}

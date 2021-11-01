@@ -2,17 +2,18 @@ import * as React from 'react';
 import { UILink, UIOutlineDownIcon } from '@/components/ui';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
-import { useMainCategories } from '@/contexts/main-categories-context';
-import { CategoriesSlider } from '../categories-slider';
+import { ICategoryResponse } from '@/utils/api/api-models';
+import CategoriesSlider from '../categories-slider';
 /* HeaderMenu Helpers */
 
 /* HeaderMenu Constants */
-
+interface HeaderMenuProps {
+  mainCategories: ICategoryResponse[];
+}
 /* HeaderMenu Styles */
 
 /* HeaderMenu Component  */
-function HeaderMenu() {
-  const { mainCategories } = useMainCategories();
+function HeaderMenu(props: HeaderMenuProps) {
   /* HeaderMenu Variables */
 
   /* HeaderMenu Callbacks */
@@ -32,44 +33,9 @@ function HeaderMenu() {
             <div className="header__menu__box">
               <ul>
                 <li>
-                  <UILink to="/merchant/home">ANASAYFA</UILink>
+                  <UILink to="/customer/home">ANASAYFA</UILink>
                 </li>
-                <li>
-                  <UILink to="/merchant/customers">SİSTEMDEKİ MÜŞTERİLER</UILink>
-                </li>
-                <li>
-                  <UILink to="">
-                    ÜRÜN iŞLEMLERİ <UIOutlineDownIcon color="#9e9e9e" />
-                  </UILink>
-                  <div className="menu_option">
-                    <ul>
-                      <li>
-                        <UILink to="/product-specifies">Tüm Ürünler</UILink>
-                      </li>
-                      <li>
-                        <UILink to="/add-product-specify">Yeni Urun Ekle</UILink>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li>
-                  <UILink to="">
-                    CARİ İŞLEMLER <UIOutlineDownIcon color="#9e9e9e" />
-                  </UILink>
-                  <div className="menu_option">
-                    <ul>
-                      <li>
-                        <UILink to="/merchant/credits">Cariler</UILink>
-                      </li>
-                      <li>
-                        <UILink to="/credit-activities">Cari Ekstreleri</UILink>
-                      </li>
-                      <li>
-                        <UILink to="/obligation-activities">Sistem Cari Ekstreleri</UILink>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
+
                 <li>
                   <UILink to="/orders">SİPARİŞLERİ GÖR</UILink>
                 </li>
@@ -94,10 +60,10 @@ function HeaderMenu() {
           </Col>
         </Row>
       </Container>
-      <Container fluid>
+      <Container fluid className="mt-5">
         <Row>
           <Col>
-            <CategoriesSlider mainCategories={mainCategories} routeBase="/categories" />
+            <CategoriesSlider mainCategories={props.mainCategories} />
           </Col>
         </Row>
       </Container>

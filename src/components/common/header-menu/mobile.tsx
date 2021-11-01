@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
-import { useAuth } from '@/contexts/auth-context';
 import {
   UILink,
   UICloseIcon,
@@ -24,6 +23,7 @@ import {
   UIPackageIcon,
 } from '@/components/ui';
 import { useWindowSize } from '@/utils/ui/use-window-size';
+import { HeaderProps } from '../header';
 /* MobileHeaderMenu Helpers */
 
 /* MobileHeaderMenu Constants */
@@ -31,9 +31,8 @@ import { useWindowSize } from '@/utils/ui/use-window-size';
 /* MobileHeaderMenu Styles */
 
 /* MobileHeaderMenu Component  */
-function MobileHeaderMenu() {
+function MobileHeaderMenu(props: HeaderProps) {
   /* MobileHeaderMenu Variables */
-  const { isAuthenticated, logout } = useAuth();
   const { width } = useWindowSize();
   const [isOpened, setIsOpened] = React.useState(false);
   /* MobileHeaderMenu Callbacks */
@@ -55,7 +54,7 @@ function MobileHeaderMenu() {
                 <img src={Logo} alt="OnlinePlasiyer" />
               </Col>
               <Col sm={6} md={6} xs={6} className="mobile__header__right d-flex justify-content-end align-items-center">
-                {isAuthenticated && (
+                {props.isAuthenticated && (
                   <>
                     <div
                       onClick={() => {
@@ -73,7 +72,7 @@ function MobileHeaderMenu() {
                     <UILogoutSecondIcon
                       size={16}
                       onClick={() => {
-                        logout();
+                        props.logout();
                       }}
                     />
                   </>

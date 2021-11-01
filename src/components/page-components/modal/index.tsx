@@ -9,6 +9,7 @@ interface ModalComponentProps {
   showCloseButton?: boolean;
   showAcceptButton?: boolean;
   onAccept?: () => void;
+  fullScreen?: boolean;
 }
 
 /* ModalComponent Component  */
@@ -23,7 +24,7 @@ function ModalComponent(props: React.PropsWithChildren<ModalComponentProps>) {
     <Modal
       show={props.isShowing}
       onHide={props.onClose}
-      dialogClassName="modal-90w"
+      dialogClassName={`modal-90w ${props.fullScreen ? 'max-width-85' : ''}`}
       aria-labelledby={`modal-${props.header}`}
     >
       <Modal.Header closeButton>

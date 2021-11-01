@@ -1,0 +1,120 @@
+/* React Multi Carousel Custom css */
+.heightFull,
+.heightFull .carouselWrapper,
+.heightFull .carouselWrapper > .swiper-container,
+.heightFull .carouselWrapper > .swiper-container > .swiper-wrapper,
+.heightFull .carouselWrapper > .swiper-container > .swiper-wrapper > .swiper-slide {
+  height: 100%;
+}
+.swiper-wrapper .swiper-slide {
+  padding-bottom: 2px;
+  height: auto;
+}
+.swiper-container .swiper-button-prev,
+.swiper-container .swiper-button-next {
+  display: none;
+}
+.carouselWrapper .swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+.carouselWrapper .swiper-container .swiper-pagination-bullets {
+  bottom: 16px;
+}
+.carouselWrapper
+  .swiper-container
+  .swiper-pagination-bullets
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 16px;
+  background-color: #000;
+}
+@media screen and (min-width: 480px) {
+  .carouselWrapper .swiper-container .swiper-pagination-bullets {
+    bottom: 20px;
+  }
+  .carouselWrapper .swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+  }
+  .carouselWrapper
+    .swiper-container
+    .swiper-pagination-bullets
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 20px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .carouselWrapper .swiper-container .swiper-pagination-bullets {
+    bottom: 28px;
+  }
+  .carouselWrapper .swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .carouselWrapper
+    .swiper-container
+    .swiper-pagination-bullets
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    width: 28px;
+  }
+}
+
+.carouselWrapper.dotsCircle .swiper-container .swiper-pagination-bullets .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 4px;
+  margin-right: 4px;
+  opacity: 0.5;
+  transform: scale(0.7);
+}
+.carouselWrapper.dotsCircle
+  .swiper-container
+  .swiper-pagination-bullets
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #fff;
+  opacity: 1;
+  transform: scale(1);
+}
+.carouselWrapper .navigation-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  z-index: 10;
+  position: absolute;
+  width: 100%;
+}
+.carouselWrapper .navigation-buttons-wrapper .left-button-navigation {
+  position: absolute;
+  left: 0;
+  margin-top: -3.5rem;
+  border-radius: 100px;
+  background-color: #fff;
+  border: #fff;
+  width: 2.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  height: 2.5rem;
+  z-index: 999;
+}
+.carouselWrapper .navigation-buttons-wrapper .right-button-navigation {
+  position: absolute;
+  right: 0;
+  margin-top: -3.5rem;
+  border-radius: 100px;
+  background-color: #fff;
+  border: #fff;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 999;
+}

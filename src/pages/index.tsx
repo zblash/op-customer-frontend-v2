@@ -4,6 +4,9 @@ import { Footer } from '@/components/common/footer/index';
 import { Header } from '@/components/common/header/index';
 import { FullScreenLoading } from '@/components/ui/full-screen-loading';
 import { css } from '@/styled';
+import { useAuth } from '@/contexts/auth-context';
+import { useMainCategories } from '@/contexts/main-categories-context';
+import { useCartContext } from '@/contexts/cart-context';
 import { LoginRegisterPage } from './login-register';
 
 const Page404 = React.lazy(() => import('./404-component').then(module => ({ default: module.Page404 })));
@@ -12,25 +15,16 @@ const OrdersPage = React.lazy(() => import('./orders/index').then(module => ({ d
 const OrderPage = React.lazy(() => import('./order/index').then(module => ({ default: module.OrderPage })));
 
 const ProfilePage = React.lazy(() => import('./profile/index').then(module => ({ default: module.ProfilePage })));
-const CreateProductSpecifyPage = React.lazy(() =>
-  import('./create-product-specify/index').then(module => ({
-    default: module.CreateProductSpecifyPage,
-  })),
-);
-const ProductSpecifiesPage = React.lazy(() =>
-  import('./product-specifies/index').then(module => ({
-    default: module.ProductSpecifiesPage,
-  })),
-);
-const MerchantHome = React.lazy(() =>
-  import('./merchant-home/index').then(module => ({
-    default: module.MerchantHome,
+
+const CustomerHome = React.lazy(() =>
+  import('./customer-home/index').then(module => ({
+    default: module.CustomerHome,
   })),
 );
 
-const UpdateProductSpeciyPage = React.lazy(() =>
-  import('./update-product-specify/index').then(module => ({
-    default: module.UpdateProductSpeciyPage,
+const CategoryProducts = React.lazy(() =>
+  import('./category-products').then(module => ({
+    default: module.CategoryProducts,
   })),
 );
 
@@ -40,33 +34,12 @@ const CreateTicketPage = React.lazy(() =>
   })),
 );
 
-const CreditActivities = React.lazy(() =>
-  import('./credit-activities/index').then(module => ({
-    default: module.CreditActivities,
-  })),
-);
-const ObligationsPage = React.lazy(() =>
-  import('./obligation-activities/index').then(module => ({
-    default: module.ObligationsPage,
+const CartPage = React.lazy(() =>
+  import('./cart/index').then(module => ({
+    default: module.CartPage,
   })),
 );
 
-const CustomersPage = React.lazy(() =>
-  import('./customers/index').then(module => ({
-    default: module.CustomersPage,
-  })),
-);
-
-const MerchantCreditsPage = React.lazy(() =>
-  import('./merchant-credits/index').then(module => ({
-    default: module.MerchantCredits,
-  })),
-);
-const CustomerProfilePage = React.lazy(() =>
-  import('./customer-profile/index').then(module => ({
-    default: module.CustomerProfilePage,
-  })),
-);
 interface IRoute {
   path: string;
   basePath: string;
@@ -76,42 +49,20 @@ interface IRoute {
 }
 
 export const RoutesList: IRoute[] = [
-  { path: '/', basePath: '/', component: MerchantHome, isPrivate: true },
+  { path: '/', basePath: '/', component: CustomerHome, isPrivate: true },
   { path: '/create-ticket', basePath: '/create-ticket', component: CreateTicketPage, isPrivate: true },
-  { path: '/credit-activities', basePath: '/credit-activities', component: CreditActivities, isPrivate: true },
   { path: '/orders/:userId?', basePath: '/orders', component: OrdersPage, isPrivate: true },
   { path: '/order/:orderId', basePath: '/order', component: OrderPage, isPrivate: true },
   { path: '/profile', basePath: '/profile', component: ProfilePage, isPrivate: true },
+  {
+    path: '/category-products/:categoryId',
+    basePath: '/category-products',
+    component: CategoryProducts,
+    isPrivate: true,
+  },
 
-  {
-    path: '/merchant/customer/:customerName/:customerId',
-    basePath: '/merchant/customer',
-    component: CustomerProfilePage,
-    isPrivate: true,
-  },
-  { path: '/merchant/customers', basePath: '/merchant/customers', component: CustomersPage, isPrivate: true },
-  { path: '/merchant/credits', basePath: '/merchant/credits', component: MerchantCreditsPage, isPrivate: true },
-  { path: '/merchant/home', basePath: '/merchant/home', component: MerchantHome, isPrivate: true },
-
-  {
-    path: '/add-product-specify',
-    basePath: '/add-product-specify',
-    component: CreateProductSpecifyPage,
-    isPrivate: true,
-  },
-  {
-    path: '/edit-product-specify/:specifyId',
-    basePath: '/edit-product-specify',
-    component: UpdateProductSpeciyPage,
-    isPrivate: true,
-  },
-  { path: '/product-specifies', basePath: '/product-specifies', component: ProductSpecifiesPage, isPrivate: true },
-  {
-    path: '/obligation-activities/:userId?',
-    basePath: '/obligation-activities',
-    component: ObligationsPage,
-    isPrivate: true,
-  },
+  { path: '/customer/home', basePath: '/customer/home', component: CustomerHome, isPrivate: true },
+  { path: '/cart', basePath: '/cart', component: CartPage, isPrivate: true },
   { path: '/login', basePath: '/login', component: LoginRegisterPage, isPrivate: false },
   { path: '/register', basePath: '/register', component: LoginRegisterPage, isPrivate: false },
 ];
@@ -119,9 +70,19 @@ const opacityLoading = css`
   opacity: 0.7;
 `;
 const Routes = React.memo(() => {
+  const { isAuthenticated, userDetails, logout } = useAuth();
+  const { mainCategories } = useMainCategories();
+  const { count: cartCount } = useCartContext();
+
   return (
     <>
-      <Header />
+      <Header
+        mainCategories={mainCategories}
+        isAuthenticated={isAuthenticated}
+        userDetails={userDetails}
+        logout={logout}
+        cartCount={cartCount}
+      />
       <div style={{ minHeight: '100%' }}>
         <React.Suspense fallback={<FullScreenLoading className={opacityLoading} />}>
           <Switch>

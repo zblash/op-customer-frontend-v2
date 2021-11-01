@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
-import { IRegisterRequest } from '@/utils/api/api-models';
+import { ICustomerRegisterRequest } from '@/utils/api/api-models';
 import { useForm, Controller } from 'react-hook-form';
-import { useRegisterMutation } from '@/queries/mutations/auth/use-register';
+import { useCustomerRegisterMutation } from '@/queries/mutations/auth/use-customer-register';
 import { useGetCities } from '@/queries/use-get-cities';
 import { useGetStatesByCity } from '@/queries/use-get-states-by-city';
 import { Loading, UISelect, UITextArea, UIInput, UIPasswordInput } from '@/components/ui';
+import { useGetCustomerTypes } from '@/queries/use-get-customer-types';
 /*
   RegisterComponent Helpers
 */
@@ -14,20 +15,22 @@ interface RegisterComponentProps {}
 const RegisterComponent: React.SFC<RegisterComponentProps> = () => {
   const [selectedCityId, setSelectedCityId] = React.useState<string>();
 
+  const { data: customerTypes, isLoading: customerTypesLoading } = useGetCustomerTypes();
   const { data: cities, isLoading: citiesLoading } = useGetCities();
   const { data: states, isLoading: statesLoading } = useGetStatesByCity(
     selectedCityId,
     selectedCityId !== undefined && selectedCityId !== null,
   );
-  const { mutate: registerMutate, isLoading } = useRegisterMutation();
+  const { mutate: registerMutate, isLoading } = useCustomerRegisterMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<IRegisterRequest>();
+  } = useForm<ICustomerRegisterRequest>();
 
   function onSubmit(s: any) {
+    console.log(s);
     registerMutate({
       cityId: s.city.value,
       stateId: s.state.value,
@@ -38,13 +41,13 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = () => {
       password: s.password,
       taxNumber: s.taxNumber,
       phoneNumber: s.phoneNumber,
-      activeStates: s.activeStates.map(state => state.value),
+      customerTypeId: s.customerType.value,
     });
   }
 
   return (
     <>
-      {!citiesLoading && (
+      {!citiesLoading && !customerTypesLoading && (
         <div>
           <form className="w-75 mx-auto mb-3" onSubmit={handleSubmit(onSubmit)}>
             <UIInput
@@ -165,25 +168,23 @@ const RegisterComponent: React.SFC<RegisterComponentProps> = () => {
             </div>
             <Controller
               control={control}
-              name="activeStates"
+              name="customerType"
               render={({ field: { onChange, value, ref } }) => (
                 <UISelect
-                  options={states?.map(x => ({
+                  options={customerTypes?.map(x => ({
                     value: x.id,
-                    label: x.title,
+                    label: x.typeName,
                   }))}
-                  labelKey="Satis Yapacaginiz Bolgeleri Secin"
+                  labelKey="Isletme Tipi Secin"
                   labelClassName="font-weight-bold"
                   className="mb-4"
-                  placeholderKey="Satis Yapacaginiz Bolgeleri Secin"
+                  placeholderKey="Isletme Tipi"
                   value={value}
                   onChange={onChange}
-                  isMulti
                   isSearchable
                   isClearable
                   inputRef={ref}
-                  name="activeStates"
-                  isDisabled={!selectedCityId && !statesLoading}
+                  name="customerType"
                 />
               )}
             />

@@ -1,0 +1,20 @@
+.shopping-cart-wrapper {
+  position: sticky;
+  top: 65px;
+  float: right;
+  right: 60px;
+  z-index: 9999;
+  cursor: pointer;
+  span {
+    position: absolute;
+    font-size: 12px;
+    right: -10px;
+    z-index: 999;
+    min-width: 18px;
+    text-align: center;
+    bottom: -5px;
+    background-color: $primary;
+    border-radius: 100px;
+    color: $white;
+  }
+}

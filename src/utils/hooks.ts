@@ -1,6 +1,7 @@
 import React from 'react';
 import { toast, TypeOptions } from 'react-toastify';
 import { useWindowSize } from '@/utils/ui/use-window-size';
+import { useLocation } from 'react-router-dom';
 
 function useStateFromProp<T>(initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = React.useState(initialValue);
@@ -95,6 +96,21 @@ function useAlert() {
   return { show };
 }
 
+function useLocationQueryParams() {
+  const url = new URL(window.location.href);
+
+  function getParam(key) {
+    return url.searchParams.get(key) || '';
+  }
+
+  function setParam(key, value) {
+    url.searchParams.set(key, value);
+    window.history.pushState({}, '', url.toString());
+  }
+
+  return { setParam, getParam };
+}
+
 export {
   useStateFromProp,
   usePrevious,
@@ -105,4 +121,5 @@ export {
   useArrayState,
   useMemoWithPrevDeps,
   useAlert,
+  useLocationQueryParams,
 };

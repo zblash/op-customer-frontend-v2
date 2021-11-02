@@ -29,7 +29,7 @@ function SpecifyAddToCart(props: SpecifyAddToCartProps) {
 
   return (
     <div className="specify-add-to-cart-input-wrapper d-flex flex-column justify-content-center">
-      <QuantityInput min={0} max={10} quantity={quantity} onChange={changeQuantity} />
+      <QuantityInput min={0} max={3000} quantity={quantity} onChange={changeQuantity} />
       {!props.disableButton && (
         <Button className="mt-1" onClick={addToCart}>
           Sepete Ekle

@@ -25,7 +25,7 @@ export const useGetAllProductsByCategoryId = (s: UseGetAllProductsByCategoryIdPr
     () => getAllProductsByCategoryId(s),
     {
       onError: (error: IExceptionResponse) => {
-        alert.show(`${t(`${error.message}`)}`, {
+        alert.show(`${t(`Bu kategorinin alt kategorisi bulunmuyor.`)}`, {
           type: 'error',
         });
       },

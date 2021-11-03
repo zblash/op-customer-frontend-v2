@@ -4,7 +4,6 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { UIContainer, UICheckbox } from '@/components/ui';
 import { useGetCustomerCreditSummary } from '@/queries/use-get-customer-credit-summary';
 import CreditsSummary from '@/components/ui/credits-summary';
-import { useGetCart } from '@/queries/use-get-cart';
 import { useAddToCartMutation } from '@/queries/mutations/use-add-to-cart';
 import { useCartCheckoutMutation } from '@/queries/mutations/use-cart-checkout';
 import { useCartSetPaymentMutation } from '@/queries/mutations/use-set-payment';
@@ -25,14 +24,13 @@ interface CartPageProps {}
 function CartPage(props: React.PropsWithChildren<CartPageProps>) {
   /* CartPage Variables */
   const history = useHistory();
-  const { setCart, removeCart } = useCartContext();
+  const { cart, setCart, removeCart, refetch: refetchCart, cartLoading, cartError } = useCartContext();
   const [allChecked, setAllChecked] = React.useState<boolean>(true);
   const [selectedSellerIds, setSelectedSellerIds] = React.useState<Array<string>>([]);
   const [selectedPaymentMethods, setSelectedPaymentMethods] = React.useState<
     Array<{ id: string; paymentMethod: string }>
   >([]);
 
-  const { data: cart, error: cartError, isLoading: cartLoading, refetch: refetchCart } = useGetCart(true);
   const {
     data: customerCreditSummary,
     isLoading: customerCreditSummaryLoading,
@@ -167,7 +165,7 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
                 </h5>
 
                 <Button
-                  className="mb-4"
+                  className="mb-4 btn-secondary"
                   disabled={selectedSellerIds.length <= 0 || selectedSellerIds.length !== selectedPaymentMethods.length}
                   onClick={handleCartCheckout}
                 >

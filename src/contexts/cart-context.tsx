@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { ICardResponse } from '@/utils/api/api-models';
-import { useAuth } from './auth-context';
+import { ICardResponse, IExceptionResponse } from '@/utils/api/api-models';
 import { useGetCart } from '@/queries/use-get-cart';
+import { RefetchOptions, QueryObserverResult } from 'react-query';
+import { useAuth } from './auth-context';
 
 const CartContextContext = React.createContext(
   {} as {
@@ -9,6 +10,9 @@ const CartContextContext = React.createContext(
     count: number;
     setCart: (count: ICardResponse) => void;
     removeCart: () => void;
+    refetch: (options?: RefetchOptions) => Promise<QueryObserverResult<ICardResponse, IExceptionResponse>>;
+    cartError: boolean;
+    cartLoading: boolean;
   },
 );
 
@@ -18,7 +22,7 @@ interface CartContextProviderProps {
 
 export const CartContextProvider = ({ children }: CartContextProviderProps) => {
   const { isAuthenticated } = useAuth();
-  const { data: cartData, error: cartError, isLoading: cartLoading } = useGetCart(isAuthenticated);
+  const { data: cartData, error: cartError, isLoading: cartLoading, refetch } = useGetCart(isAuthenticated);
   const [cart, setCart] = React.useState<ICardResponse | undefined>();
   const removeCart = () => {
     setCart(undefined);
@@ -37,6 +41,9 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         cart,
         setCart,
         removeCart,
+        refetch,
+        cartError,
+        cartLoading
       }}
     >
       {children}

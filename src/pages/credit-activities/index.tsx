@@ -79,7 +79,8 @@ function CreditActivitiesPage(props: React.PropsWithChildren<CreditActivitiesPag
                 },
                 {
                   Header: 'Satici',
-                  accessor: 'merchantName',
+                  accessor: 'merchant',
+                  customRenderer: (item: ICreditActivityResponse) => item.merchantName,
                   sort: true,
                   sortType: 'desc',
                 },

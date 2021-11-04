@@ -157,7 +157,7 @@ function CartItemHolder(props: CartItemHolderProps) {
                 customRenderer: (productSpecify: ICardItemResponse) => (
                   <Button
                     onClick={() => {
-                      props.removeItemHandler(productSpecify.productId);
+                      props.removeItemHandler(productSpecify.id);
                     }}
                   >
                     <FaTrash />

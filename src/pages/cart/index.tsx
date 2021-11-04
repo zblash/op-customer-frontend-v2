@@ -102,6 +102,8 @@ function CartPage(props: React.PropsWithChildren<CartPageProps>) {
         !paymentMethdosError &&
         !paymentMethodsLoading &&
         !cartError &&
+        cart &&
+        cart.items &&
         cart.items.length > 0 &&
         !customerCreditSummaryError &&
         !customerCreditSummaryLoading && (

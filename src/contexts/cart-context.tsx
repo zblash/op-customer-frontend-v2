@@ -11,7 +11,7 @@ const CartContextContext = React.createContext(
     setCart: (count: ICardResponse) => void;
     removeCart: () => void;
     refetch: (options?: RefetchOptions) => Promise<QueryObserverResult<ICardResponse, IExceptionResponse>>;
-    cartError: boolean;
+    cartError: any;
     cartLoading: boolean;
   },
 );
@@ -43,7 +43,7 @@ export const CartContextProvider = ({ children }: CartContextProviderProps) => {
         removeCart,
         refetch,
         cartError,
-        cartLoading
+        cartLoading,
       }}
     >
       {children}

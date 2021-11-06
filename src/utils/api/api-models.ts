@@ -111,6 +111,8 @@ export interface ISpecifyProductRequest {
   discountUnit?: number;
   promotionText?: string;
   customerTypeIdList: string[];
+  promotionType: string;
+  promotionDiscountType: string;
 }
 
 export interface IAddressStateResponse {
@@ -194,6 +196,8 @@ export interface IProductPromotion {
   promotionText: string;
   discountValue: number;
   discountUnit: number;
+  promotionDiscountType: string;
+  promotionType: string;
 }
 
 export interface ICardItemResponse {
@@ -269,6 +273,8 @@ export interface IOrderItems {
   discountedTotalPrice: number;
   unitPrice: number;
   unitType: UnitTypeResponse;
+  unitContents: number;
+  promotionText: string;
 }
 
 export interface IOrder {

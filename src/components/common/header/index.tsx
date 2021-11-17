@@ -2,7 +2,6 @@
 import * as React from 'react';
 import { Container } from 'react-bootstrap';
 import {
-  UILink,
   UIUserIcon,
   UIMapIcon,
   UIFacebookIcon,
@@ -13,10 +12,12 @@ import {
   UINotificationHornIcon,
   UINotificationIcon,
   UIDownChevronIcon,
-} from '@/components/ui';
-import { useWindowSize } from '@/utils/ui/use-window-size';
-import { IUserInfoResponse, ICategoryResponse } from '@/utils/api/api-models';
-import ShoppingCart from '@/components/ui/shopping-cart';
+  UILink,
+  useWindowSize,
+  IUserInfoResponse,
+  ICategoryResponse,
+} from '@onlineplasiyer/op-web-fronted';
+import ShoppingCart from '@/components/page-components/shopping-cart';
 import { HeaderMenu } from '../header-menu/desktop';
 import { MobileHeaderMenu } from '../header-menu/mobile';
 import { TabletHeaderMenu } from '../header-menu/tablet';

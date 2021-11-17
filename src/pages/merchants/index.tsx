@@ -2,10 +2,8 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Row, Col } from 'react-bootstrap';
-import { UIContainer, UITableComponent, UILink } from '@/components/ui';
+import { UIContainer, UITableComponent, UILink, ICommonMerchantResponse } from '@onlineplasiyer/op-web-fronted';
 import { useGetAllMerchants } from '@/queries/paginated/use-get-all-merchants';
-import { ICommonMerchantResponse } from '@/utils/api/api-models';
-
 /*
   OrdersPage Helpers
 */

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
 import {
-  UILink,
   UILogoutSecondIcon,
   UIOutlineDownIcon,
   UIUserIcon,
@@ -13,8 +12,9 @@ import {
   UIInstagramIcon,
   UILinkedInIcon,
   UINotificationIcon,
-} from '@/components/ui';
-import { useWindowSize } from '@/utils/ui/use-window-size';
+  UILink,
+  useWindowSize,
+} from '@onlineplasiyer/op-web-fronted';
 import { HeaderProps } from '../header';
 /* MobileHeaderMenu Helpers */
 

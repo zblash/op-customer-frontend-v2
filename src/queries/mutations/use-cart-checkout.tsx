@@ -1,9 +1,8 @@
 import { useMutation } from 'react-query';
-import { IExceptionResponse } from '@/utils/api/api-models';
-import { useAlert } from '@/utils/hooks';
+import { IExceptionResponse, mutationEndPoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+
 import { useCartContext } from '@/contexts/cart-context';
 import { useTranslation } from 'react-i18next';
-import { mutationEndPoints } from '@/utils/api/mutation-endpoints';
 
 export interface CartCheckoutProps {
   sellerIdList: string[];

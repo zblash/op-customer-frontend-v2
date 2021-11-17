@@ -1,11 +1,15 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import styled, { colors, css } from '@/styled';
-import { UILink, UIEditIcon } from '@/components/ui';
-import { IOrder, TOrderStatus } from '@/utils/api/api-models';
-import { UITableComponent } from '@/components/ui/table/index';
+import {
+  UITableComponent,
+  UIEditIcon,
+  OrderListFilterComponent,
+  UILink,
+  IOrder,
+  TOrderStatus,
+} from '@onlineplasiyer/op-web-fronted';
 import { Button } from 'react-bootstrap';
-import { OrderListFilterComponent } from './filter';
 
 /* OrderListComponent Helpers */
 interface OrderListComponentProps {
@@ -29,6 +33,7 @@ const ORDER_STATUS_MAP: Record<TOrderStatus, string> = {
   CONFIRMED: 'Onaylandi',
   CANCEL_REQUEST: 'Iptal Istegi',
   PREPARED: 'Hazirlaniyor/Hazir',
+  ON_WAY: 'Yolda',
 };
 /* OrderListComponent Styles */
 const StyledActionsWrapper = styled.div`

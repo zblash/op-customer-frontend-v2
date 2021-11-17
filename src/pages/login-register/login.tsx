@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { Loading, UILink, UIInput, UIPasswordInput } from '@/components/ui';
+import { Loading, UIInput, PasswordInput, UILink } from '@onlineplasiyer/op-web-fronted';
 import { useCustomerLoginMutation, LoginInputType } from '@/queries/mutations/auth/use-customer-login';
-
 import { Button } from 'react-bootstrap';
 /*
   LoginComponent Helpers
@@ -48,7 +47,7 @@ const LoginComponent: React.SFC<LoginComponentProps> = () => {
           })}
           errorKey={errors.username?.message}
         />
-        <UIPasswordInput
+        <PasswordInput
           labelKey="Şifre"
           labelClassName="font-weight-bold"
           className="mb-5"

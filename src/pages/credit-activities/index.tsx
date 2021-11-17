@@ -1,11 +1,9 @@
 /* eslint-disable dot-notation */
 import * as React from 'react';
 import { useParams, useLocation } from 'react-router';
-import { UIContainer, UITableComponent } from '@/components/ui';
-import { twoDigit } from '@/utils';
+import { UIContainer, UITableComponent, ICreditActivityResponse, twoDigit } from '@onlineplasiyer/op-web-fronted';
 import { Row, Col } from 'react-bootstrap';
-import { ICreditActivityResponse } from '@/utils/api/api-models';
-import CreditActivitiesFilterComponent from '@/components/ui/credit-activities-filter';
+import CreditActivitiesFilterComponent from '@/components/page-components/credit-activities-filter';
 import { useGetAllUsersCreditActivities } from '@/queries/paginated/use-get-all-users-credit-activities';
 
 /* CreditActivitiesPage Helpers */

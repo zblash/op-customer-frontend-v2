@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { UIContainer, UITableComponent } from '@/components/ui';
+import { UIContainer, UITableComponent, IOrderItems } from '@onlineplasiyer/op-web-fronted';
 import { useGetOrder } from '@/queries/use-get-order';
-import { IOrderItems } from '@/utils/api/api-models';
 import { Row, Col } from 'react-bootstrap';
 /* OrderPage Helpers */
 interface OrderPageProps {}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGetCategories } from '@/queries/use-get-categories';
-import { ICategoryResponse } from '@/utils/api/api-models';
+import { ICategoryResponse } from '@onlineplasiyer/op-web-fronted';
 import { useAuth } from './auth-context';
 
 const MainCategoriesContext = React.createContext(

@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { UIContainer, UILink, UITableComponent } from '@/components/ui';
+import { UIContainer, UITableComponent, UILink, IUserCreditResponse } from '@onlineplasiyer/op-web-fronted';
 import { useGetAllUserCredits } from '@/queries/paginated/use-get-all-user-credits';
-import { IUserCreditResponse } from '@/services/helpers/backend-models';
 import { Row, Col } from 'react-bootstrap';
-import { FaRegEdit } from 'react-icons/fa';
-
 /* MerchantCreditsPage Helpers */
 interface MerchantCreditsPageProps {}
 

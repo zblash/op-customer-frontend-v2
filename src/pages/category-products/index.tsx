@@ -1,17 +1,14 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import { UIContainer } from '@/components/ui';
-import ProductCard from '@/components/ui/product-card';
+import ProductCard from '@/components/page-components/product-card';
 import { useGetAllProductsByCategoryId } from '@/queries/paginated/use-get-all-products-by-category-id';
-import SubCategoriesFilter from '@/components/ui/product-filters/sub-categories-filter';
+import SubCategoriesFilter from '@/components/page-components/product-filters/sub-categories-filter';
 import { useGetSubCategoriesByParent } from '@/queries/use-get-sub-categories-by-parent';
-import { Pagination } from '@/components/ui/pagination';
-import { useLocationQueryParams } from '@/utils/hooks';
+import { Pagination, UIContainer, IProductResponse, useLocationQueryParams } from '@onlineplasiyer/op-web-fronted';
 import { useAddToCartMutation } from '@/queries/mutations/use-add-to-cart';
-import ProductSpecifyModal from '@/components/ui/product-speficies-modal';
+import ProductSpecifyModal from '@/components/page-components/product-speficies-modal';
 import { useGetProductSpecifies } from '@/queries/paginated/use-get-product-specifies';
-import { IProductResponse } from '@/utils/api/api-models';
 
 /* CategoryProducts Helpers */
 interface CategoryProductsProps {}

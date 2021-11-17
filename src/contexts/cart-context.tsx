@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ICardResponse, IExceptionResponse } from '@/utils/api/api-models';
+import { ICardResponse, IExceptionResponse } from '@onlineplasiyer/op-web-fronted';
 import { useGetCart } from '@/queries/use-get-cart';
 import { RefetchOptions, QueryObserverResult } from 'react-query';
 import { useAuth } from './auth-context';

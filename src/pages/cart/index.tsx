@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
-import { UIContainer, UICheckbox } from '@/components/ui';
+import { UIContainer, UICheckbox } from '@onlineplasiyer/op-web-fronted';
 import { useGetCustomerCreditSummary } from '@/queries/use-get-customer-credit-summary';
-import CreditsSummary from '@/components/ui/credits-summary';
+import CreditsSummary from '@/components/page-components/credits-summary';
 import { useAddToCartMutation } from '@/queries/mutations/use-add-to-cart';
 import { useCartCheckoutMutation } from '@/queries/mutations/use-cart-checkout';
 import { useCartSetPaymentMutation } from '@/queries/mutations/use-set-payment';
 import { useRemoveCartItemMutation } from '@/queries/mutations/use-remove-cart';
-import CartItemHolder from '@/components/ui/cart-item-holder';
+import CartItemHolder from '@/components/page-components/cart-item-holder';
 import { useGetPaymentMethods } from '@/queries/use-get-payment-methods';
 import { useCartContext } from '@/contexts/cart-context';
 

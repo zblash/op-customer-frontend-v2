@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import { useIsFetching } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import Routes from '@/pages';
-import { FullScreenLoading } from '@/components/ui/full-screen-loading';
+import { FullScreenLoading } from '@onlineplasiyer/op-web-fronted';
 import { css } from '@/styled';
 import { LoadingContext } from '@/contexts/loading-context';
 import { AuthProvider } from '@/contexts/auth-context';
@@ -27,29 +26,27 @@ function App() {
   }, [isFetching]);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <MainCategoriesContextProvider>
-          <CartContextProvider>
-            <LoadingContext.Provider
-              value={{
-                show: () => {
-                  setLoading(true);
-                },
-                hide: () => {
-                  setLoading(false);
-                },
-              }}
-            >
-              {loading && <FullScreenLoading className={opacityLoading} />}
+    <AuthProvider>
+      <MainCategoriesContextProvider>
+        <CartContextProvider>
+          <LoadingContext.Provider
+            value={{
+              show: () => {
+                setLoading(true);
+              },
+              hide: () => {
+                setLoading(false);
+              },
+            }}
+          >
+            {loading && <FullScreenLoading className={opacityLoading} />}
 
-              <Routes />
-              <ToastContainer />
-            </LoadingContext.Provider>
-          </CartContextProvider>
-        </MainCategoriesContextProvider>
-      </AuthProvider>
-    </BrowserRouter>
+            <Routes />
+            <ToastContainer />
+          </LoadingContext.Provider>
+        </CartContextProvider>
+      </MainCategoriesContextProvider>
+    </AuthProvider>
   );
 }
 

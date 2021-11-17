@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { AnnouncementComponent } from '@/components/page-components/announcements';
+import { AnnouncementComponent, UIContainer } from '@onlineplasiyer/op-web-fronted';
 import { useGetAnnouncements } from '@/queries/use-get-announcements';
 import { Row, Col } from 'react-bootstrap';
-import { UIContainer } from '@/components/ui';
 import { useGetCustomerCreditSummary } from '@/queries/use-get-customer-credit-summary';
-import CreditsSummary from '@/components/ui/credits-summary';
-import ProductCard from '@/components/ui/product-card';
+import CreditsSummary from '@/components/page-components/credits-summary';
 
 /* CustomerHome Helpers */
 interface CustomerHomeProps {}

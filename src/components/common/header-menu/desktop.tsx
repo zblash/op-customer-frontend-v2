@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { UILink, UIOutlineDownIcon } from '@/components/ui';
+import { UIOutlineDownIcon, UILink, ICategoryResponse } from '@onlineplasiyer/op-web-fronted';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
-import { ICategoryResponse } from '@/utils/api/api-models';
 import CategoriesSlider from '../categories-slider';
 /* HeaderMenu Helpers */
 

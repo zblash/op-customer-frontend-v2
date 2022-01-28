@@ -16,7 +16,7 @@ import {
   useWindowSize,
   IUserInfoResponse,
   ICategoryResponse,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import ShoppingCart from '@/components/page-components/shopping-cart';
 import { HeaderMenu } from '../header-menu/desktop';
 import { MobileHeaderMenu } from '../header-menu/mobile';

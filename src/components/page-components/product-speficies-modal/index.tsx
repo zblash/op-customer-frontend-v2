@@ -7,7 +7,7 @@ import {
   ModalComponent,
   ISpecifyProductResponse,
   IProductResponse,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import SpecifyAddToCart from './specify-add-to-cart';
 
 interface ProductSpecifyModalProps {

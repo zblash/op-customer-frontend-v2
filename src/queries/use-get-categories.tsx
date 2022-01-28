@@ -6,7 +6,7 @@ import {
   GetCategoriesVariables,
   useAlert,
   categoriesQueryKeys,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 
 async function getCategories(input: GetCategoriesVariables) {
   return queryEndpoints.getCategories(input);

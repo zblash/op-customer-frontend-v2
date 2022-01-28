@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
-import { Loading, UIInput, PasswordInput, UILink } from '@onlineplasiyer/op-web-fronted';
+import { Loading, UIInput, PasswordInput, UILink } from '@zblash/op-web-fronted';
 import { useCustomerLoginMutation, LoginInputType } from '@/queries/mutations/auth/use-customer-login';
 import { Button } from 'react-bootstrap';
 /*

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Row, Col } from 'react-bootstrap';
-import { UIContainer, UITableComponent, UILink, ICommonMerchantResponse } from '@onlineplasiyer/op-web-fronted';
+import { UIContainer, UITableComponent, UILink, ICommonMerchantResponse } from '@zblash/op-web-fronted';
 import { useGetAllMerchants } from '@/queries/paginated/use-get-all-merchants';
 /*
   OrdersPage Helpers

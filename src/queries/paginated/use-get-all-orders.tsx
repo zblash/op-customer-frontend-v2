@@ -6,7 +6,7 @@ import {
   paginatedQueryEndpoints,
   useAlert,
   ordersQueryKeys,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 
 export interface UseGetAllOrdersProps {
   userId?: string;

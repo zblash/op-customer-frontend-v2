@@ -1,5 +1,5 @@
 import React from 'react';
-import { UIShoppingCartIcon, UILink } from '@onlineplasiyer/op-web-fronted';
+import { UIShoppingCartIcon, UILink } from '@zblash/op-web-fronted';
 
 interface ShoppingCartProps {
   cartCount: number;

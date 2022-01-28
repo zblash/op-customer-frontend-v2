@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnnouncementComponent, UIContainer } from '@onlineplasiyer/op-web-fronted';
+import { AnnouncementComponent, UIContainer } from '@zblash/op-web-fronted';
 import { useGetAnnouncements } from '@/queries/use-get-announcements';
 import { Row, Col } from 'react-bootstrap';
 import { useGetCustomerCreditSummary } from '@/queries/use-get-customer-credit-summary';

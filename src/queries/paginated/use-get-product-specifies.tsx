@@ -5,7 +5,7 @@ import {
   paginatedQueryEndpoints,
   useAlert,
   productSpecifiesQueryKeys,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 
 export interface UseGetProductSpecifiesProps {
   userId?: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import { QuantityInput } from '@onlineplasiyer/op-web-fronted';
+import { QuantityInput } from '@zblash/op-web-fronted';
 
 interface SpecifyAddToCartProps {
   productSpecifyId: string;

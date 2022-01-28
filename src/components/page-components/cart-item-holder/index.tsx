@@ -9,7 +9,7 @@ import {
   UICheckbox,
   UIContainer,
   UITrashIcon,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import { Row, Col, Button } from 'react-bootstrap';
 import SpecifyAddToCart from '../product-speficies-modal/specify-add-to-cart';
 

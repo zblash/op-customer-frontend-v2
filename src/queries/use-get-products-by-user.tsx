@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, queryEndpoints, useAlert, productsQueryKeys } from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, queryEndpoints, useAlert, productsQueryKeys } from '@zblash/op-web-fronted';
 
 async function getAllProductsByUser() {
   return queryEndpoints.getAllProducts();

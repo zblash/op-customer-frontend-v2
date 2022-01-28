@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
-import { UIContainer, UICheckbox } from '@onlineplasiyer/op-web-fronted';
+import { UIContainer, UICheckbox } from '@zblash/op-web-fronted';
 import { useGetCustomerCreditSummary } from '@/queries/use-get-customer-credit-summary';
 import CreditsSummary from '@/components/page-components/credits-summary';
 import { useAddToCartMutation } from '@/queries/mutations/use-add-to-cart';

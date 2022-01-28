@@ -1,11 +1,6 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import {
-  IExceptionResponse,
-  paginatedQueryEndpoints,
-  useAlert,
-  productsQueryKeys,
-} from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, paginatedQueryEndpoints, useAlert, productsQueryKeys } from '@zblash/op-web-fronted';
 
 export interface UseGetAllProductsProps {
   userId?: string;

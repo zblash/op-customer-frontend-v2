@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, queryEndpoints, useAlert, categoriesQueryKeys } from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, queryEndpoints, useAlert, categoriesQueryKeys } from '@zblash/op-web-fronted';
 
 async function getSubCategoriesByParent(parentId: string) {
   return queryEndpoints.getSubCategoriesByParentId({ parentId });

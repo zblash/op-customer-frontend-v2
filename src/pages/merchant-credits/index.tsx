@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UIContainer, UITableComponent, UILink, IUserCreditResponse } from '@onlineplasiyer/op-web-fronted';
+import { UIContainer, UITableComponent, UILink, IUserCreditResponse } from '@zblash/op-web-fronted';
 import { useGetAllUserCredits } from '@/queries/paginated/use-get-all-user-credits';
 import { Row, Col } from 'react-bootstrap';
 /* MerchantCreditsPage Helpers */

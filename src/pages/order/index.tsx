@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { UIContainer, UITableComponent, IOrderItems } from '@onlineplasiyer/op-web-fronted';
+import { UIContainer, UITableComponent, IOrderItems } from '@zblash/op-web-fronted';
 import { useGetOrder } from '@/queries/use-get-order';
 import { Row, Col } from 'react-bootstrap';
 /* OrderPage Helpers */

@@ -1,5 +1,5 @@
 /* eslint-disable func-names */
-import { ICreditResponse } from '@onlineplasiyer/op-web-fronted';
+import { ICreditResponse } from '@zblash/op-web-fronted';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import React from 'react';
 import Chart from 'react-apexcharts';

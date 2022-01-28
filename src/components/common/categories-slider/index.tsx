@@ -1,6 +1,6 @@
 import React from 'react';
 import { SwiperSlide } from 'swiper/react';
-import { Carousel, UILink, ICategoryResponse } from '@onlineplasiyer/op-web-fronted';
+import { Carousel, UILink, ICategoryResponse } from '@zblash/op-web-fronted';
 
 interface CategoriesSliderProps {
   mainCategories: ICategoryResponse[];

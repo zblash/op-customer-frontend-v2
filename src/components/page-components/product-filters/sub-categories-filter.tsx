@@ -1,5 +1,5 @@
 import React from 'react';
-import { UILink, ICategoryResponse } from '@onlineplasiyer/op-web-fronted';
+import { UILink, ICategoryResponse } from '@zblash/op-web-fronted';
 
 interface SubCategoriesFilterProps {
   categories: ICategoryResponse[];

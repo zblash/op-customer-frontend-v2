@@ -4,7 +4,7 @@ import { useParams, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { OrderListComponent } from '@/components/page-components/order-list';
 import { Row, Col } from 'react-bootstrap';
-import { twoDigit, IOrder, TOrderStatus, UIContainer } from '@onlineplasiyer/op-web-fronted';
+import { twoDigit, IOrder, TOrderStatus, UIContainer } from '@zblash/op-web-fronted';
 import { useLoadingContext } from '@/contexts/loading-context';
 import { useGetAllOrders } from '@/queries/paginated/use-get-all-orders';
 

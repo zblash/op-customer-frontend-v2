@@ -1,5 +1,5 @@
 import { useMutation } from 'react-query';
-import { mutationEndPoints, IExceptionResponse, useAlert } from '@onlineplasiyer/op-web-fronted';
+import { mutationEndPoints, IExceptionResponse, useAlert } from '@zblash/op-web-fronted';
 import { useCartContext } from '@/contexts/cart-context';
 import { useTranslation } from 'react-i18next';
 

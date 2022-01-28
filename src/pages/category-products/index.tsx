@@ -5,7 +5,7 @@ import ProductCard from '@/components/page-components/product-card';
 import { useGetAllProductsByCategoryId } from '@/queries/paginated/use-get-all-products-by-category-id';
 import SubCategoriesFilter from '@/components/page-components/product-filters/sub-categories-filter';
 import { useGetSubCategoriesByParent } from '@/queries/use-get-sub-categories-by-parent';
-import { Pagination, UIContainer, IProductResponse, useLocationQueryParams } from '@onlineplasiyer/op-web-fronted';
+import { Pagination, UIContainer, IProductResponse, useLocationQueryParams } from '@zblash/op-web-fronted';
 import { useAddToCartMutation } from '@/queries/mutations/use-add-to-cart';
 import ProductSpecifyModal from '@/components/page-components/product-speficies-modal';
 import { useGetProductSpecifies } from '@/queries/paginated/use-get-product-specifies';

@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, mutationEndPoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, mutationEndPoints, useAlert } from '@zblash/op-web-fronted';
 import { useCartContext } from '@/contexts/cart-context';
 
 export interface AddToCartProps {

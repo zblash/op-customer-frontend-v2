@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { queryEndpoints, IExceptionResponse, useAlert } from '@onlineplasiyer/op-web-fronted';
+import { queryEndpoints, IExceptionResponse, useAlert } from '@zblash/op-web-fronted';
 
 async function getCart() {
   return queryEndpoints.getCart();

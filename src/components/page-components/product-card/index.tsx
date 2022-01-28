@@ -1,5 +1,5 @@
 import React from 'react';
-import { IProductResponse } from '@onlineplasiyer/op-web-fronted';
+import { IProductResponse } from '@zblash/op-web-fronted';
 import { Button } from 'react-bootstrap';
 import placeholderImage from '@/assets/placeholder/products/product-listSmall.svg';
 

@@ -8,7 +8,7 @@ import {
   UILink,
   IOrder,
   TOrderStatus,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import { Button } from 'react-bootstrap';
 
 /* OrderListComponent Helpers */

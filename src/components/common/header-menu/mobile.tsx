@@ -22,7 +22,7 @@ import {
   UIPackageIcon,
   UILink,
   useWindowSize,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import { HeaderProps } from '../header';
 /* MobileHeaderMenu Helpers */
 

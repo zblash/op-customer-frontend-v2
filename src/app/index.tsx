@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useIsFetching } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import Routes from '@/pages';
-import { FullScreenLoading } from '@onlineplasiyer/op-web-fronted';
+import { FullScreenLoading } from '@zblash/op-web-fronted';
 import { css } from '@/styled';
 import { LoadingContext } from '@/contexts/loading-context';
 import { AuthProvider } from '@/contexts/auth-context';

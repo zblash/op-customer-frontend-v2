@@ -11,7 +11,7 @@ import {
   UIInput,
   PasswordInput,
   ICustomerRegisterRequest,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 import { useGetCustomerTypes } from '@/queries/use-get-customer-types';
 /*
   RegisterComponent Helpers

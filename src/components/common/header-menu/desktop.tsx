@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UIOutlineDownIcon, UILink, ICategoryResponse } from '@onlineplasiyer/op-web-fronted';
+import { UIOutlineDownIcon, UILink, ICategoryResponse } from '@zblash/op-web-fronted';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
 import CategoriesSlider from '../categories-slider';

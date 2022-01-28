@@ -6,7 +6,7 @@ import {
   paginatedQueryEndpoints,
   useAlert,
   creditActivitiesQueryKeys,
-} from '@onlineplasiyer/op-web-fronted';
+} from '@zblash/op-web-fronted';
 
 export interface UseGetAllCreditActivitiesProps {
   pageNumber: number;

@@ -1,6 +1,12 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { ActivityType, IExceptionResponse, paginatedQueryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import {
+  ActivityType,
+  IExceptionResponse,
+  paginatedQueryEndpoints,
+  useAlert,
+  creditActivitiesQueryKeys,
+} from '@onlineplasiyer/op-web-fronted';
 
 export interface UseGetAllCreditActivitiesProps {
   pageNumber: number;
@@ -21,25 +27,11 @@ export const useGetAllCreditActivities = (s: UseGetAllCreditActivitiesProps) => 
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery(
-    [
-      'all-credit-activities',
-      s.pageNumber,
-      s.sortBy,
-      s.sortType,
-      s.customerId,
-      s.merchantId,
-      s.activityType,
-      s.startDate,
-      s.lastDate,
-    ],
-    () => getGetAllCreditActivities(s),
-    {
-      onError: (error: IExceptionResponse) => {
-        alert.show(`${t(`${error.message}`)}`, {
-          type: 'error',
-        });
-      },
+  return useQuery(creditActivitiesQueryKeys.list(s), () => getGetAllCreditActivities(s), {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
+        type: 'error',
+      });
     },
-  );
+  });
 };

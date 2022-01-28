@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, queryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, queryEndpoints, useAlert, statesQueryKeys } from '@onlineplasiyer/op-web-fronted';
 
 async function getStatesForShippingDays() {
   return queryEndpoints.getAllowedStateForShippingDays();
@@ -10,7 +10,7 @@ export const useGetStatesForShippingDays = () => {
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery(['states-for-shipping-days'], () => getStatesForShippingDays(), {
+  return useQuery(statesQueryKeys.forShippingDays(), () => getStatesForShippingDays(), {
     onError: (error: IExceptionResponse) => {
       alert.show(`${t(`${error.message}`)}`, {
         type: 'error',

@@ -1,8 +1,14 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, paginatedQueryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import {
+  IExceptionResponse,
+  paginatedQueryEndpoints,
+  useAlert,
+  productSpecifiesQueryKeys,
+} from '@onlineplasiyer/op-web-fronted';
 
 export interface UseGetProductSpecifiesProps {
+  userId?: string;
   productId?: string;
   pageNumber: number;
   sortBy?: string;
@@ -29,16 +35,12 @@ export const useGetProductSpecifies = (s: UseGetProductSpecifiesProps) => {
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery(
-    ['all-product-specifies', s.pageNumber, s.sortBy, s.sortType, s.productId],
-    () => getProductSpecifies(s),
-    {
-      onError: (error: IExceptionResponse) => {
-        alert.show(`${t(`${error.message}`)}`, {
-          type: 'error',
-        });
-      },
-      enabled: s.isEnabled,
+  return useQuery(productSpecifiesQueryKeys.list(s), () => getProductSpecifies(s), {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
+        type: 'error',
+      });
     },
-  );
+    enabled: s.isEnabled,
+  });
 };

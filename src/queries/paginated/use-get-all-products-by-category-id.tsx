@@ -1,6 +1,11 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, paginatedQueryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import {
+  IExceptionResponse,
+  paginatedQueryEndpoints,
+  useAlert,
+  productsQueryKeys,
+} from '@onlineplasiyer/op-web-fronted';
 
 export interface UseGetAllProductsByCategoryIdProps {
   userId?: string;
@@ -18,15 +23,11 @@ export const useGetAllProductsByCategoryId = (s: UseGetAllProductsByCategoryIdPr
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery(
-    ['all-products-by-category-id', s.pageNumber, s.sortBy, s.sortType, s.userId, s.categoryId],
-    () => getAllProductsByCategoryId(s),
-    {
-      onError: (error: IExceptionResponse) => {
-        alert.show(`${t(`${error.message}`)}`, {
-          type: 'error',
-        });
-      },
+  return useQuery(productsQueryKeys.list(s), () => getAllProductsByCategoryId(s), {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
+        type: 'error',
+      });
     },
-  );
+  });
 };

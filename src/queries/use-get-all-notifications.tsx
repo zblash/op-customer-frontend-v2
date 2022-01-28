@@ -10,7 +10,7 @@ export const useGetAllNotifications = () => {
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery('all-notifications', () => getAllNotifications(), {
+  return useQuery(['all-notifications'], () => getAllNotifications(), {
     onError: (error: IExceptionResponse) => {
       alert.show(`${t(`${error.message}`)}`, {
         type: 'error',

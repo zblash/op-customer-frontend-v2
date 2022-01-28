@@ -1,6 +1,12 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, TOrderStatus, paginatedQueryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import {
+  IExceptionResponse,
+  TOrderStatus,
+  paginatedQueryEndpoints,
+  useAlert,
+  ordersQueryKeys,
+} from '@onlineplasiyer/op-web-fronted';
 
 export interface UseGetAllOrdersProps {
   userId?: string;
@@ -20,15 +26,11 @@ export const useGetAllOrders = (s: UseGetAllOrdersProps) => {
   const alert = useAlert();
   const { t } = useTranslation();
 
-  return useQuery(
-    ['all-orders', s.pageNumber, s.sortBy, s.sortType, s.userId, s.userName, s.startDate, s.status],
-    () => getAllOrders(s),
-    {
-      onError: (error: IExceptionResponse) => {
-        alert.show(`${t(`${error.message}`)}`, {
-          type: 'error',
-        });
-      },
+  return useQuery(ordersQueryKeys.list(s), () => getAllOrders(s), {
+    onError: (error: IExceptionResponse) => {
+      alert.show(`${t(`${error.message}`)}`, {
+        type: 'error',
+      });
     },
-  );
+  });
 };
